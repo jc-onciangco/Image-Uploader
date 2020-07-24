@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; 
+        }
+
+        body{
+            height: 100vh;
+            width: 100%;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container{
+            background-color: orange;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .title{
+            padding: 20px 15px;
+        }
+
+        .title h1, .title p{
+            color: white;
+        }
+
+        .msg{
+            color: white;
+            background-color: red;
+            border-radius: 5px;
+            padding: 4px 8px;
+            margin-left: 15px;
+        }
+
+        form{
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .field-form{
+            margin-bottom: 30px;
+        }
+
+        button{
+            padding: 5px 10px;
+            background-color: #FFE1AA;
+            color: white;
+            outline: none;
+            border: none;
+        }
+
+        .img-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        img{
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Image Uploader</h1>
+            <p>upload image using multer and express js</p>
+        </div>
+        <% if(typeof msg !== 'undefined'){ %>
+            <small class="msg"><%= msg %></small>
+        <% } %>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="field-form">
+                <input type="file" name="image">
+            </div>
+            <button type="submit">
+                UPLOAD
+            </button>
+        </form>
+        <div class="img-container">
+            <% if(typeof file !== 'undefined'){ %>
+                <img src="<%= file %>" alt="image">
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
